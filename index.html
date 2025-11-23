@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Minsha – Peri Peri Makhana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Minsha – Premium roasted peri peri makhana. Healthy, crunchy and guilt-free snacking."
+  />
+  <style>
+    :root {
+      --bg-dark: #0b0b0f;
+      --bg-card: #15151c;
+      --accent: #f2b544;
+      --accent-soft: rgba(242, 181, 68, 0.12);
+      --text-main: #f9f9ff;
+      --text-muted: #a7a7c6;
+      --danger: #ff4b4b;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --radius-big: 26px;
+      --radius-med: 18px;
+      --radius-pill: 999px;
+      --transition-fast: 0.2s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #1b1b27 0, #05050a 55%, #000 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrapper {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 5, 12, 0.88),
+        rgba(5, 5, 10, 0.4)
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(
+        circle at 30% 20%,
+        #ffe6a8,
+        #f2b544 40%,
+        #9f5a00 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #2b1700;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .brand-tagline {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--text-muted);
+      transition: var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+      background: rgba(242, 181, 68, 0.08);
+    }
+
+    .nav-cta {
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(120deg, #f8bf4f, #ff9454);
+      border: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      color: #2b1700;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+    }
+
+    .nav-cta span.icon {
+      font-size: 1.05rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(18, 18, 26, 0.9);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .nav-toggle div {
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      position: relative;
+    }
+
+    .nav-toggle div::before,
+    .nav-toggle div::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      left: 0;
+    }
+
+    .nav-toggle div::before {
+      top: -5px;
+    }
+
+    .nav-toggle div::after {
+      top: 5px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 36px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(242, 181, 68, 0.12);
+      border: 1px solid rgba(242, 181, 68, 0.24);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(242, 181, 68, 0.3);
+    }
+
+    .hero-title {
+      font-size: clamp(2.15rem, 3vw + 1.2rem, 3.2rem);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(120deg, #f9d27b, #ffad5d);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      max-width: 460px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+      font-size: 0.78rem;
+    }
+
+    .hero-badges span {
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(9, 9, 14, 0.9);
+      color: var(--text-muted);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .btn-primary {
+      padding: 11px 20px;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      font-size: 0.92rem;
+      font-weight: 600;
+      background: linear-gradient(130deg, #f8bf4f, #ff9454);
+      color: #321600;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn-ghost {
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(8, 8, 16, 0.85);
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: var(--transition-fast);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(18, 18, 32, 0.95);
+    }
+
+    .hero-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .hero-note span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* HERO IMAGE CARD */
+    .hero-card {
+      background: radial-gradient(circle at top, #2a2220 0, #120f13 60%, #050408 100%);
+      border-radius: var(--radius-big);
+      padding: 18px 18px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(255, 199, 116, 0.4), transparent 60%);
+      top: -60px;
+      right: -20px;
+      opacity: 0.8;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .hero-tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--danger);
+      box-shadow: 0 0 10px rgba(255, 75, 75, 0.7);
+    }
+
+    .hero-card-main {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 14px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-product {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-product-circle {
+      width: 170px;
+      height: 170px;
+      border-radius: 999px;
+      background: radial-gradient(
+        circle at 30% 20%,
+        #ffefc1,
+        #f5b956 55%,
+        #8a4800 100%
+      );
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-product-circle::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: inherit;
+      border: 1px dashed rgba(255, 255, 255, 0.28);
+      opacity: 0.8;
+    }
+
+    /* NEW: pouch photo inside hero circle */
+    .hero-product-photo-wrap {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #2b2b33 0, #050509 60%, #000 100%);
+    }
+
+    .hero-product-photo {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 18px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75);
+      object-fit: cover;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .hero-stat-card {
+      background: rgba(10, 10, 18, 0.92);
+      border-radius: 16px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-stat-card strong {
+      color: var(--accent);
+      font-size: 0.92rem;
+    }
+
+    .hero-stat-pill {
+      font-size: 0.72rem;
+      background: rgba(242, 181, 68, 0.12);
+      border-radius: 999px;
+      padding: 3px 9px;
+      border: 1px solid rgba(242, 181, 68, 0.3);
+      color: var(--accent);
+    }
+
+    .hero-floating {
+      position: absolute;
+      right: 12px;
+      top: 62%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 10px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .hero-floating span.label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .hero-floating span.value {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    /* SECTION BASE */
+    section {
+      padding: 28px 0 40px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+    }
+
+    .section-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* WHY MINSHA  */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: rgba(10, 10, 18, 0.92);
+      border-radius: var(--radius-med);
+      border: 1px solid var(--border-soft);
+      padding: 14px 14px 16px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(242, 181, 68, 0.08);
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 0.98rem;
+      margin-bottom: 5px;
+    }
+
+    .card-text {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* PRODUCTS */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .product-card {
+      background: rgba(12, 12, 19, 0.96);
+      border-radius: var(--radius-med);
+      border: 1px solid var(--border-soft);
+      padding: 14px 14px 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-chip {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      font-size: 0.72rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffdba4;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .product-img-placeholder {
+      width: 100%;
+      height: 150px;
+      border-radius: 18px;
+      margin-bottom: 10px;
+      background: radial-gradient(
+        circle at top,
+        #ffe5b9 0,
+        #f0a848 45%,
+        #7a3e00 100%
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .product-img-placeholder span {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(21, 10, 0, 0.85);
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .product-title {
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+
+    .product-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    .product-meta strong {
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .product-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.72rem;
+      margin-bottom: 8px;
+    }
+
+    .product-tags span {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(9, 9, 15, 0.9);
+      color: var(--text-muted);
+    }
+
+    .product-cta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-mini {
+      font-size: 0.78rem;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(242, 181, 68, 0.16);
+      color: var(--accent);
+    }
+
+    .btn-mini:hover {
+      background: rgba(242, 181, 68, 0.26);
+    }
+
+    /* HOW TO ORDER */
+    .order-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 16px;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: rgba(9, 9, 15, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .step-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(242, 181, 68, 0.16);
+      border: 1px solid rgba(242, 181, 68, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .order-actions {
+      background: rgba(9, 9, 16, 0.95);
+      border-radius: var(--radius-med);
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .order-actions p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .order-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-whatsapp,
+    .btn-instagram {
+      border-radius: var(--radius-pill);
+      padding: 10px 18px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.86rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-whatsapp {
+      background: #23d366;
+      color: #021308;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .btn-instagram {
+      background: radial-gradient(
+        circle at 30% 10%,
+        #feda75,
+        #f58529,
+        #dd2a7b,
+        #8134af
+      );
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    /* TESTIMONIALS & FAQ */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 16px;
+    }
+
+    .testimonial {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quote {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-left: 2px solid rgba(242, 181, 68, 0.5);
+      padding-left: 10px;
+    }
+
+    .quote small {
+      display: block;
+      margin-top: 6px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .stars {
+      font-size: 0.85rem;
+      color: #ffd772;
+    }
+
+    .faq-item {
+      border-radius: 15px;
+      background: rgba(8, 8, 14, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      font-size: 0.83rem;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .faq-a {
+      color: var(--text-muted);
+    }
+
+    /* CONTACT/FOOTER */
+    .contact-card {
+      background: rgba(7, 7, 12, 0.98);
+      border-radius: var(--radius-big);
+      padding: 18px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      margin-bottom: 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 16px;
+    }
+
+    .contact-info {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .contact-info strong {
+      color: var(--accent);
+    }
+
+    .contact-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.82rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .field label {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .field input,
+    .field textarea {
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(3, 3, 8, 0.9);
+      color: #fff;
+      outline: none;
+      font-size: 0.82rem;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(160, 160, 190, 0.7);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .form-note {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      padding: 10px 18px 18px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .hero-grid,
+      .order-grid,
+      .two-col,
+      .contact-card,
+      .hero-card-main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-card {
+        margin-top: 6px;
+      }
+
+      .hero-floating {
+        position: static;
+        transform: none;
+        margin-top: 6px;
+      }
+
+      .why-grid,
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 56px;
+        right: 18px;
+        padding: 10px;
+        border-radius: 16px;
+        background: rgba(9, 9, 16, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        flex-direction: column;
+        align-items: flex-start;
+        width: 190px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-cta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .hero {
+        padding-top: 26px;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .why-grid,
+      .products-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-card {
+        border-radius: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="wrapper nav-inner">
+      <div class="brand">
+        <div class="brand-logo">M</div>
+        <div class="brand-text">
+          <span class="brand-name">Minsha</span>
+          <span class="brand-tagline">Guilt-Free Crunch, Full Taste</span>
+        </div>
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#hero">Home</a>
+        <a href="#why">Why Minsha</a>
+        <a href="#products">Products</a>
+        <a href="#order">How to Order</a>
+        <a href="#contact">Contact</a>
+
+        <button class="nav-cta" onclick="scrollToSection('order')">
+          Order Now <span class="icon">🔥</span>
+        </button>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <div></div>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero" id="hero">
+      <div class="wrapper hero-grid">
+        <div>
+          <div class="pill">
+            <span class="pill-dot"></span>
+            Freshly Roasted • Made for Late-Night Cravings
+          </div>
+          <h1 class="hero-title">
+            Premium <span class="highlight">Peri Peri Makhana</span><br />
+            for smart snackers.
+          </h1>
+          <p class="hero-subtitle">
+            Minsha brings you slow-roasted, chef-style peri peri makhana —
+            light, crunchy and full of flavour. No maida. No nonsense. Just
+            clean snacking for your hustle hours.
+          </p>
+
+          <div class="hero-badges">
+            <span>✅ Roasted, not fried</span>
+            <span>🔒 FSSAI compliant kitchen</span>
+            <span>🔥 Bold peri peri kick</span>
+            <span>🌾 Gluten-free</span>
+          </div>
+
+          <div class="hero-cta-row">
+            <button class="btn-primary" onclick="scrollToSection('order')">
+              Order on WhatsApp <span>→</span>
+            </button>
+            <button class="btn-ghost" onclick="scrollToSection('products')">
+              View all flavours
+            </button>
+          </div>
+          <p class="hero-note">
+            🎁 <span>Launch offer:</span> Flat 10% off on your first Minsha pack.
+          </p>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-tag">
+            <span class="hero-tag-dot"></span>
+            Today’s Batch: Freshly Roasted
+          </div>
+
+          <div class="hero-card-main">
+            <div class="hero-product">
+              <div class="hero-product-circle hero-product-photo-wrap">
+                <img
+                  src="minsha-hero.jpg"
+                  alt="Minsha Peri Peri Makhana Pouches"
+                  class="hero-product-photo"
+                />
+              </div>
+            </div>
+
+            <div class="hero-stats">
+              <div class="hero-stat-card">
+                <div>
+                  <div>Per 100g (Approx.)</div>
+                  <strong>High-Protein, Low-Guilt</strong>
+                </div>
+                <span class="hero-stat-pill"
+                  >Perfect for gym, work & binge nights</span
+                >
+              </div>
+              <div class="hero-stat-card">
+                <div>
+                  <div>Small batch crafted in India</div>
+                  <strong>Hand-tossed peri peri blend</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-floating">
+            <span class="label">Shelf Life*</span>
+            <span class="value">Best before 90 days</span>
+            <span class="label">Storage</span>
+            <span>Keep in cool, dry place. Reseal pouch after opening.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- WHY MINSHA -->
+    <section id="why">
+      <div class="wrapper">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Why snack with Minsha?</h2>
+            <p class="section-sub">
+              Not your regular namkeen — this is a smarter way to crunch.
+            </p>
+          </div>
+        </div>
+
+        <div class="why-grid">
+          <div class="card">
+            <div class="card-badge">Clean Ingredients</div>
+            <h3 class="card-title">No maida. No artificial drama.</h3>
+            <p class="card-text">
+              Made with premium foxnuts, high-quality ghee/oil and our in-house
+              peri peri mix. No cheap fillers, no random powders you can’t
+              pronounce.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-badge">Perfect Crunch</div>
+            <h3 class="card-title">Slow-roasted, not deep fried.</h3>
+            <p class="card-text">
+              Each batch is gently roasted so you get that light, airy crunch
+              without the heavy, oily feeling after snacking.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-badge">Made for Real Life</div>
+            <h3 class="card-title">Gym, office, Netflix nights.</h3>
+            <p class="card-text">
+              Toss Minsha into your gym bag, work desk or late-night setup —
+              it’s the one snack your cravings and your conscience agree on.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+      <div class="wrapper">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Minsha Flavour Line-up</h2>
+            <p class="section-sub">
+              Start with Peri Peri. Add more flavours as you grow.
+            </p>
+          </div>
+        </div>
+
+        <div class="products-grid">
+          <!-- Product 1 -->
+          <div class="product-card">
+            <div class="product-chip">Best Seller</div>
+            <div class="product-img-placeholder">
+              <span>Peri Peri Makhana</span>
+            </div>
+            <h3 class="product-title">Peri Peri Makhana – 100g</h3>
+            <p class="product-desc">
+              Signature Minsha spice: tangy, spicy and perfectly balanced. Once
+              you open the pack, it won’t last long.
+            </p>
+            <div class="product-meta">
+              <span>Net weight: 100g</span>
+              <span><strong>₹199</strong> launch price</span>
+            </div>
+            <div class="product-tags">
+              <span>Roasted</span>
+              <span>No maida</span>
+              <span>Kids-friendly (mild-medium spice)</span>
+            </div>
+            <div class="product-cta-row">
+              <button class="btn-mini" onclick="scrollToSection('order')">
+                Order this flavour →
+              </button>
+              <small style="color: var(--text-muted)"
+                >Custom bulk order? Just ask us on WhatsApp.</small
+              >
+            </div>
+          </div>
+
+          <!-- Product 2 (Future flavour placeholder) -->
+          <div class="product-card">
+            <div class="product-chip">Coming Soon</div>
+            <div class="product-img-placeholder">
+              <span>Cheese & Herbs</span>
+            </div>
+            <h3 class="product-title">Cheese & Herb Makhana – 100g</h3>
+            <p class="product-desc">
+              Creamy, cheesy notes with herb seasoning. Designed for those who
+              vibe with cheesy snacking — minus the junk.
+            </p>
+            <div class="product-meta">
+              <span>Net weight: 100g</span>
+              <span><strong>₹—</strong></span>
+            </div>
+            <div class="product-tags">
+              <span>Future flavour</span>
+              <span>Perfect for kids</span>
+            </div>
+            <div class="product-cta-row">
+              <button class="btn-mini" disabled>Launching soon</button>
+            </div>
+          </div>
+
+          <!-- Product 3 (Future flavour placeholder) -->
+          <div class="product-card">
+            <div class="product-chip">Coming Soon</div>
+            <div class="product-img-placeholder">
+              <span>Desi Masala</span>
+            </div>
+            <h3 class="product-title">Desi Masala Makhana – 100g</h3>
+            <p class="product-desc">
+              Chatpata Indian masala with a nostalgic twist. Think namkeen
+              vibes, but in a cleaner avatar.
+            </p>
+            <div class="product-meta">
+              <span>Net weight: 100g</span>
+              <span><strong>₹—</strong></span>
+            </div>
+            <div class="product-tags">
+              <span>Future flavour</span>
+              <span>Hustle snack</span>
+            </div>
+            <div class="product-cta-row">
+              <button class="btn-mini" disabled>Launching soon</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO ORDER -->
+    <section id="order">
+      <div class="wrapper">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">How to order Minsha?</h2>
+            <p class="section-sub">
+              Simple process. Fast reply. Real human support.
+            </p>
+          </div>
+        </div>
+
+        <div class="order-grid">
+          <div class="steps">
+            <div class="step-item">
+              <div class="step-badge">1</div>
+              <div>
+                <strong>Ping us on WhatsApp or Instagram.</strong><br />
+                Tell us flavour + quantity + city. We’ll confirm stock and
+                total amount.
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-badge">2</div>
+              <div>
+                <strong>Make payment & share address.</strong><br />
+                UPI / QR / bank transfer options available with order
+                confirmation screenshot.
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-badge">3</div>
+              <div>
+                <strong>We roast, pack & ship.</strong><br />
+                Fresh batch prepared, packed with care and shipped to your
+                doorstep.
+              </div>
+            </div>
+          </div>
+
+          <aside class="order-actions">
+            <p><strong>Ready to place your first Minsha order?</strong></p>
+            <p>
+              Click any button below to start a chat. We usually reply quickly
+              because we know cravings don’t wait. 😋
+            </p>
+
+            <div class="order-btn-row">
+              <button class="btn-whatsapp" onclick="openWhatsApp()">
+                💬 Order on WhatsApp
+              </button>
+              <button class="btn-instagram" onclick="openInstagram()">
+                📸 DM on Instagram
+              </button>
+            </div>
+
+            <p class="form-note">
+              Bulk / gym / office orders? Mention “bulk enquiry” in your message
+              and we’ll share special pricing.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS & FAQ -->
+    <section>
+      <div class="wrapper two-col">
+        <div class="testimonial">
+          <h2 class="section-title">People who tried Minsha said...</h2>
+          <p class="quote">
+            "Best peri peri makhana I've had so far. Spice is on point and it
+            doesn't feel heavy at all. Perfect for my night shifts."
+            <small>— Early customer review</small>
+          </p>
+          <p class="quote">
+            "My kid actually likes this more than chips 😭 At least I feel
+            better giving this."
+            <small>— Parent feedback</small>
+          </p>
+          <div class="stars">
+            ★★★★★
+            <span style="color: var(--text-muted);">Tasting batch feedback</span>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="section-title" style="margin-bottom: 8px;">FAQ</h2>
+
+          <div class="faq-item">
+            <div class="faq-q">Is peri peri very spicy?</div>
+            <div class="faq-a">
+              We keep it in the mild-medium range — full of flavour, not
+              torture. Kids and spice-lovers both enjoy it. For extra spicy
+              versions, you can request in DM.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">How long does it stay fresh?</div>
+            <div class="faq-a">
+              Best before 90 days from packing when stored in a cool, dry
+              place. Once opened, consume within a few days for best crunch.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-q">Do you provide COD?</div>
+            <div class="faq-a">
+              Right now we mostly take prepaid orders (UPI / bank transfer). For
+              local deliveries or bulk, COD options can be discussed on chat.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="wrapper">
+        <div class="contact-card">
+          <div>
+            <div class="contact-highlight">📦 Partner with Minsha</div>
+            <p class="contact-info">
+              Want to stock Minsha at your
+              <strong>gym, cafe, office pantry or store</strong>?<br />
+              Drop your details and we’ll get back with bulk pricing and
+              sampling options.
+            </p>
+            <br />
+            <p class="contact-info">
+              <strong>Brand:</strong> Minsha – Peri Peri Makhana<br />
+              <strong>Location:</strong> India<br />
+              <strong>Available on:</strong> WhatsApp, Instagram (online orders)
+            </p>
+          </div>
+
+          <div>
+            <form onsubmit="handleSubmit(event)">
+              <div class="field">
+                <label for="name">Name</label>
+                <input
+                  id="name"
+                  type="text"
+                  placeholder="Your name / store name"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="phone">Phone / WhatsApp</label>
+                <input
+                  id="phone"
+                  type="tel"
+                  placeholder="Your WhatsApp number"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  placeholder="E.g. Interested in bulk order for gym / office / store"
+                ></textarea>
+              </div>
+              <button class="btn-primary" type="submit">Submit enquiry</button>
+              <p class="form-note">
+                We’ll respond on WhatsApp as soon as possible after receiving
+                your enquiry.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Minsha. All rights reserved. Crafted with care
+    for snack-lovers.
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+      });
+    }
+
+    // Smooth scroll to section
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+
+    // WhatsApp link
+    function openWhatsApp() {
+      const url =
+        "https://wa.me/918240744711?text=" +
+        encodeURIComponent("Hi, I want to order Minsha Peri Peri Makhana.");
+      window.open(url, "_blank");
+    }
+
+    // Instagram link
+    function openInstagram() {
+      const url = "https://www.instagram.com/minsha.og/";
+      window.open(url, "_blank");
+    }
+
+    // Form submit handler connected to backend
+    async function handleSubmit(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !phone) {
+        alert("Please fill your name and WhatsApp number.");
+        return;
+      }
+
+      try {
+        const res = await fetch("http://localhost:5000/api/enquiry", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, phone, message }),
+        });
+
+        if (!res.ok) {
+          throw new Error("Server error");
+        }
+
+        const data = await res.json();
+        console.log("Response from backend:", data);
+
+        alert(
+          "Thanks! Your enquiry has been sent to Minsha. We'll contact you on WhatsApp soon. ✅"
+        );
+        e.target.reset();
+      } catch (err) {
+        console.error(err);
+        alert(
+          "Kuch issue aa gaya server se connect karne me. Thodi der baad try karo."
+        );
+      }
+    }
+
+    // Set current year in footer
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
